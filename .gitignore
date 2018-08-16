@@ -1,0 +1,20 @@
+# Manuscript output
+manuscript/*.docx
+manuscript/*.html
+manuscript/*.pdf
+manuscript/*.tex
+manuscript/tex-out/*
+manuscript/vc*
+
+# Other folders
+admin
+!output/*.pdf
+
+# R stuff
+.Rproj.user
+.Rhistory
+*_cache
+*_files
+
+# Miscellaneous
+.DS_Store

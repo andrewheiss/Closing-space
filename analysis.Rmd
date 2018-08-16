@@ -1,0 +1,15 @@
+---
+title: 'Analysis for "Closing Space"'
+author:
+- name: Suparna Chaudhry
+  affiliation: Christopher Newport University
+- name: Andrew Heiss
+  affiliation: Brigham Young University
+date: "Last run: `r format(Sys.time(), '%B %e, %Y')`"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: sandstone
+    code_folding: hide
+---
+
