@@ -15,28 +15,27 @@ ngo_blue_dk <- "#1A3399"
 
 # ggplot themes -----------------------------------------------------------
 
-update_geom_defaults("label", list(family = "RobotoCondensed-Light"))
-update_geom_defaults("label_repel", list(family = "RobotoCondensed-Light"))
-update_geom_defaults("text", list(family = "RobotoCondensed-Light"))
-update_geom_defaults("text_repel", list(family = "RobotoCondensed-Light"))
+update_geom_defaults("label", list(family = "Oswald Light"))
+update_geom_defaults("text", list(family = "Oswald Light"))
 
-theme_ngo <- function(base_size = 9, base_family = "RobotoCondensed-Regular") {
+theme_ngo <- function(base_size = 9, base_family = "Oswald-Regular") {
   ret <- theme_bw(base_size, base_family) +
     theme(plot.title = element_text(size = rel(1.4), face = "plain",
-                                    family = "RobotoCondensed-Bold"),
+                                    family = "Oswald SemiBold"),
           plot.subtitle = element_text(size = rel(1), face = "plain",
-                                       family = "RobotoCondensed-Light"),
+                                       family = "Oswald Light"),
           plot.caption = element_text(size = rel(0.8), color = "grey50", face = "plain",
-                                      family = "RobotoCondensed-Light",
+                                      family = "Oswald Light",
                                       margin = margin(t = 10)),
           strip.text = element_text(size = rel(1), face = "plain",
-                                    family = "RobotoCondensed-Bold"),
+                                    family = "Oswald SemiBold"),
           panel.border = element_blank(), 
           panel.grid.minor = element_blank(),
           strip.background = element_rect(fill = "#ffffff", colour = NA),
           axis.ticks = element_blank(),
           axis.title.x = element_text(margin = margin(t = 10)),
           legend.key = element_blank(),
+          legend.text = element_text(family = "Oswald Light", face = "plain"),
           legend.spacing = unit(0.1, "lines"),
           legend.box.margin = margin(t = -0.5, unit = "lines"),
           legend.margin = margin(t = 0),
@@ -45,9 +44,12 @@ theme_ngo <- function(base_size = 9, base_family = "RobotoCondensed-Regular") {
   ret
 }
 
-theme_ngo_map <- function(base_size = 11, base_family = "RobotoCondensed-Regular") {
+theme_ngo_map <- function(base_size = 11, base_family = "Oswald-Regular") {
   ret <- theme_void(base_size, base_family) +
-    theme(legend.position = "bottom")
+    theme(legend.position = "bottom",
+          legend.text = element_text(size = rel(1), family = "Oswald Light", face = "plain"),
+          legend.title = element_text(family = "Oswald-Regular", face = "plain"),
+          legend.key.size = unit(0.7, "lines"))
   
   ret
 }

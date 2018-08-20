@@ -1,0 +1,196 @@
+Country,Electoral Democracy Index,Gini Score,HDI Score,HDI category,Income group,Number of Records,CIVICUS Monitor Rating,Population,Rating,Region
+Bahrain,Null,Null,0.824,4,High income,1,Closed,1377237,Closed,ASIA
+Saudi Arabia,Null,Null,0.837,4,High income,1,Closed,31540372,Closed,ASIA
+United Arab Emirates,Null,Null,0.835,4,High income,1,Closed,9156963,Closed,ASIA
+Seychelles,Null,Null,0.772,3,High income,1,Narrowed,96471,Narrowed,AFRICA
+Antigua and Barbuda,Null,Null,0.783,3,High income,1,Narrowed,91818,Narrowed,AMERICAS
+Bahamas,Null,Null,0.79,3,High income,1,Narrowed,388019,Narrowed,AMERICAS
+Canada,0.876,Null,0.913,4,High income,1,Narrowed,23344179,Narrowed,AMERICAS
+Chile,0.884,Null,0.832,4,High income,1,Narrowed,17948141,Narrowed,AMERICAS
+St Kitts and Nevis,Null,Null,0.752,3,High income,1,Narrowed,55572,Narrowed,AMERICAS
+Trinidad and Tobago,Null,Null,0.772,3,High income,1,Narrowed,1360088,Narrowed,AMERICAS
+United States of America,0.908,46.4,0.915,4,High income,1,Narrowed,321773631,Narrowed,AMERICAS
+Uruguay,0.911,Null,0.793,3,High income,1,Narrowed,3431555,Narrowed,AMERICAS
+Japan,0.842,Null,0.891,4,High income,1,Narrowed,126573481,Narrowed,ASIA
+South Korea,0.724,Null,0.898,4,High income,1,Narrowed,54490406,Narrowed,ASIA
+Austria,Null,27.2,0.885,4,High income,1,Narrowed,8544586,Narrowed,EUROPE
+Croatia,Null,30.6,0.818,4,High income,1,Narrowed,4240317,Narrowed,EUROPE
+France,Null,29.2,0.888,4,High income,1,Narrowed,64395345,Narrowed,EUROPE
+Greece,Null,34.2,0.865,4,High income,1,Narrowed,10954617,Narrowed,EUROPE
+Italy,Null,32.4,0.873,4,High income,1,Narrowed,59797685,Narrowed,EUROPE
+Lithuania,0.855,37.9,0.839,4,High income,1,Narrowed,2878405,Narrowed,EUROPE
+Poland,0.865,30.6,0.843,4,High income,1,Narrowed,38611794,Narrowed,EUROPE
+Slovakia,Null,23.7,0.844,4,High income,1,Narrowed,5426258,Narrowed,EUROPE
+Slovenia,0.846,24.5,0.88,4,High income,1,Narrowed,2067526,Narrowed,EUROPE
+Spain,0.878,34.6,0.876,4,High income,1,Narrowed,46121699,Narrowed,EUROPE
+United Kingdom,Null,32.4,0.907,4,High income,1,Narrowed,64715810,Narrowed,EUROPE
+Australia,0.866,33.3,0.935,4,High income,1,Narrowed,23968973,Narrowed,OCEANIA
+Nauru,Null,Null,Null,Null,High income,1,Narrowed,10222,Narrowed,OCEANIA
+Brunei Darussalam,Null,Null,0.856,4,High income,1,Obstructed,423188,Obstructed,ASIA
+Israel,Null,Null,0.894,4,High income,1,Obstructed,8064036,Obstructed,ASIA
+Kuwait,Null,Null,0.816,4,High income,1,Obstructed,3892115,Obstructed,ASIA
+Singapore,Null,Null,0.912,4,High income,1,Obstructed,5603740,Obstructed,ASIA
+Hungary,Null,28.2,0.828,4,High income,1,Obstructed,9855023,Obstructed,EUROPE
+Barbados,0.568,Null,0.785,3,High income,1,Open,284215,Open,AMERICAS
+Andorra,Null,Null,0.845,4,High income,1,Open,70473,Open,EUROPE
+Belgium,0.892,Null,0.89,4,High income,1,Open,11299192,Open,EUROPE
+Cyprus,Null,33.6,0.85,4,High income,1,Open,1165300,Open,EUROPE
+Czech Republic,Null,25,0.87,4,High income,1,Open,10543186,Open,EUROPE
+Denmark,0.918,27.4,0.923,4,High income,1,Open,5669081,Open,EUROPE
+Estonia,0.921,34.8,0.861,4,High income,1,Open,1312558,Open,EUROPE
+Finland,0.908,25.2,0.883,4,High income,1,Open,5503457,Open,EUROPE
+Germany,0.768,30.1,0.916,4,High income,1,Open,80688545,Open,EUROPE
+Iceland,Null,23.6,0.899,4,High income,1,Open,329425,Open,EUROPE
+Ireland,Null,30.8,0.916,4,High income,1,Open,4688465,Open,EUROPE
+Latvia,0.896,35.4,0.819,4,High income,1,Open,1970503,Open,EUROPE
+Liechtenstein,Null,Null,0.908,4,High income,1,Open,37531,Open,EUROPE
+Luxembourg,Null,28.5,0.892,4,High income,1,Open,567110,Open,EUROPE
+Malta,Null,28.1,0.839,4,High income,1,Open,418670,Open,EUROPE
+Monaco,Null,Null,Null,Null,High income,1,Open,37731,Open,EUROPE
+Netherlands,0.783,26.4,0.922,4,High income,1,Open,16924929,Open,EUROPE
+Norway,Null,23.9,0.944,4,High income,1,Open,5210967,Open,EUROPE
+Portugal,0.906,34,0.83,4,High income,1,Open,10349803,Open,EUROPE
+San Marino,Null,Null,Null,Null,High income,1,Open,31781,Open,EUROPE
+Sweden,0.903,25.2,0.907,4,High income,1,Open,9779426,Open,EUROPE
+Switzerland,0.943,29.5,0.93,4,High income,1,Open,8298663,Open,EUROPE
+New Zealand,Null,33,0.913,4,High income,1,Open,4528526,Open,OCEANIA
+Oman,Null,Null,0.793,3,High income,1,Repressed,4490541,Repressed,ASIA
+Qatar,0.095,40.4,0.85,4,High income,1,Repressed,2235355,Repressed,ASIA
+Burundi,0.323,33.36,0.4,1,Low income,1,Closed,11178921,Closed,AFRICA
+Democractic Republic of the Congo,Null,42.1,0.433,1,Low income,1,Closed,77266814,Closed,AFRICA
+Eritrea,0.075,Null,0.391,1,Low income,1,Closed,5227791,Closed,AFRICA
+Ethiopia,0.249,Null,0.442,1,Low income,1,Closed,99390750,Closed,AFRICA
+Somalia,0.189,39.7,Null,Null,Low income,1,Closed,10787104,Closed,AFRICA
+South Sudan,0.206,46.34,0.467,1,Low income,1,Closed,12339812,Closed,AFRICA
+North Korea,Null,Null,Null,Null,Low income,1,Closed,25155317,Closed,ASIA
+Benin,0.65,Null,0.48,1,Low income,1,Narrowed,10879829,Narrowed,AFRICA
+Comoros,Null,Null,0.503,1,Low income,1,Narrowed,788474,Narrowed,AFRICA
+Malawi,0.552,Null,0.445,1,Low income,1,Narrowed,17215232,Narrowed,AFRICA
+Senegal,Null,Null,0.466,1,Low income,1,Narrowed,15129273,Narrowed,AFRICA
+Burkina Faso,0.639,35.3,0.402,1,Low income,1,Obstructed,18105570,Obstructed,AFRICA
+Guinea,Null,Null,0.411,1,Low income,1,Obstructed,12608590,Obstructed,AFRICA
+Guinea Bissau,Null,Null,0.42,1,Low income,1,Obstructed,1844325,Obstructed,AFRICA
+Madagascar,Null,Null,0.51,1,Low income,1,Obstructed,24235390,Obstructed,AFRICA
+Mali,Null,Null,0.419,1,Low income,1,Obstructed,17599694,Obstructed,AFRICA
+Mozambique,0.454,Null,0.416,1,Low income,1,Obstructed,27977863,Obstructed,AFRICA
+Niger,Null,33.99,0.348,1,Low income,1,Obstructed,19899120,Obstructed,AFRICA
+Sierra Leone,Null,Null,0.413,1,Low income,1,Obstructed,6453184,Obstructed,AFRICA
+Tanzania,0.498,Null,0.521,1,Low income,1,Obstructed,53470420,Obstructed,AFRICA
+Togo,Null,Null,0.484,1,Low income,1,Obstructed,7304578,Obstructed,AFRICA
+Haiti,Null,Null,0.483,1,Low income,1,Obstructed,10711067,Obstructed,AMERICAS
+Nepal,0.253,Null,0.548,1,Low income,1,Obstructed,28513700,Obstructed,ASIA
+Central African Republic,Null,Null,0.35,1,Low income,1,Repressed,4900274,Repressed,AFRICA
+Chad,Null,43.32,0.392,1,Low income,1,Repressed,14037472,Repressed,AFRICA
+Gambia,Null,Null,0.441,1,Low income,1,Repressed,1990924,Repressed,AFRICA
+Liberia,Null,Null,0.43,1,Low income,1,Repressed,4503438,Repressed,AFRICA
+Rwanda,Null,50.44,0.483,1,Low income,1,Repressed,11609666,Repressed,AFRICA
+Uganda,0.366,41.01,0.483,1,Low income,1,Repressed,39032383,Repressed,AFRICA
+Zimbabwe,0.319,Null,0.509,1,Low income,1,Repressed,15602751,Repressed,AFRICA
+Afghanistan,0.395,Null,0.465,1,Low income,1,Repressed,32526562,Repressed,ASIA
+Sudan,0.249,Null,0.479,1,Lower middle income,1,Closed,40234882,Closed,AFRICA
+Laos,Null,Null,0.575,2,Lower middle income,1,Closed,6802023,Closed,ASIA
+Syria,0.153,32,0.594,2,Lower middle income,1,Closed,18502413,Closed,ASIA
+Uzbekistan,0.183,Null,0.675,2,Lower middle income,1,Closed,29893488,Closed,ASIA
+Vietnam,Null,37.59,0.666,2,Lower middle income,1,Closed,93447601,Closed,ASIA
+Ghana,0.725,Null,0.579,2,Lower middle income,1,Narrowed,27409893,Narrowed,AFRICA
+Bolivia,0.634,48.3,0.662,2,Lower middle income,1,Narrowed,10724705,Narrowed,AMERICAS
+El Salvador,0.683,41.8,0.666,2,Lower middle income,1,Narrowed,6126583,Narrowed,AMERICAS
+Kosovo,0.56,Null,Null,Null,Lower middle income,1,Narrowed,1800000,Narrowed,EUROPE
+Kiribati,Null,Null,0.59,2,Lower middle income,1,Narrowed,112423,Narrowed,OCEANIA
+Micronesia,Null,Null,0.64,2,Lower middle income,1,Narrowed,104460,Narrowed,OCEANIA
+Papua New Guinea,0.434,Null,0.505,1,Lower middle income,1,Narrowed,7619321,Narrowed,OCEANIA
+Samoa,Null,Null,0.702,3,Lower middle income,1,Narrowed,193228,Narrowed,OCEANIA
+Solomon Islands,0.64,Null,0.506,1,Lower middle income,1,Narrowed,583591,Narrowed,OCEANIA
+Tonga,Null,Null,0.717,3,Lower middle income,1,Narrowed,106170,Narrowed,OCEANIA
+Vanuatu,Null,Null,0.594,2,Lower middle income,1,Narrowed,264652,Narrowed,OCEANIA
+Côte d'Ivoire,Null,Null,0.462,1,Lower middle income,1,Obstructed,22701556,Obstructed,AFRICA
+Kenya,0.523,Null,0.548,1,Lower middle income,1,Obstructed,46050302,Obstructed,AFRICA
+Lesotho,Null,Null,0.497,1,Lower middle income,1,Obstructed,2135022,Obstructed,AFRICA
+Morocco,0.309,Null,0.628,2,Lower middle income,1,Obstructed,34377511,Obstructed,AFRICA
+Nigeria,0.548,Null,0.514,1,Lower middle income,1,Obstructed,182201962,Obstructed,AFRICA
+Tunisia,0.71,Null,0.721,3,Lower middle income,1,Obstructed,11253554,Obstructed,AFRICA
+Zambia,0.517,Null,0.586,2,Lower middle income,1,Obstructed,16211767,Obstructed,AFRICA
+Guatemala,Null,48.6,0.627,2,Lower middle income,1,Obstructed,16342897,Obstructed,AMERICAS
+Honduras,Null,50.4,0.606,2,Lower middle income,1,Obstructed,8075060,Obstructed,AMERICAS
+Nicaragua,Null,47,0.631,2,Lower middle income,1,Obstructed,6082032,Obstructed,AMERICAS
+Armenia,0.359,Null,0.733,3,Lower middle income,1,Obstructed,3017712,Obstructed,ASIA
+Bhutan,0.516,Null,0.605,2,Lower middle income,1,Obstructed,774830,Obstructed,ASIA
+India,Null,Null,0.609,2,Lower middle income,1,Obstructed,1311050527,Obstructed,ASIA
+Indonesia,0.67,Null,0.684,2,Lower middle income,1,Obstructed,257563815,Obstructed,ASIA
+Kyrgyzstan,0.5,Null,0.655,2,Lower middle income,1,Obstructed,5939962,Obstructed,ASIA
+Mongolia,0.734,32.04,0.727,3,Lower middle income,1,Obstructed,2959134,Obstructed,ASIA
+Philippines,0.608,Null,0.668,2,Lower middle income,1,Obstructed,100699395,Obstructed,ASIA
+Sri Lanka,Null,Null,0.757,3,Lower middle income,1,Obstructed,20715010,Obstructed,ASIA
+Timor-Leste,0.652,Null,0.595,2,Lower middle income,1,Obstructed,1184765,Obstructed,ASIA
+Moldova,0.665,Null,0.693,2,Lower middle income,1,Obstructed,4068897,Obstructed,EUROPE
+Ukraine,0.355,Null,0.747,3,Lower middle income,1,Obstructed,44823765,Obstructed,EUROPE
+Cape Verde,Null,Null,0.646,2,Lower middle income,1,Open,35939927,Open,AFRICA
+Sao Tome and Principe,Null,Null,0.555,2,Lower middle income,1,Open,190344,Open,AFRICA
+Cameroon,0.376,46.5,0.512,1,Lower middle income,1,Repressed,15577899,Repressed,AFRICA
+Djibouti,Null,44.13,0.47,1,Lower middle income,1,Repressed,887861,Repressed,AFRICA
+Egypt,0.248,51.3,0.69,2,Lower middle income,1,Repressed,91508084,Repressed,AFRICA
+Mauritania,Null,32.4,0.506,1,Lower middle income,1,Repressed,4067564,Repressed,AFRICA
+Republic of the Congo,Null,48.94,0.591,2,Lower middle income,1,Repressed,4620330,Repressed,AFRICA
+Swaziland,Null,Null,0.531,1,Lower middle income,1,Repressed,1286970,Repressed,AFRICA
+Bangladesh,0.439,Null,0.57,2,Lower middle income,1,Repressed,160995642,Repressed,ASIA
+Cambodia,0.287,30.76,0.555,2,Lower middle income,1,Repressed,520502,Repressed,ASIA
+Myanmar,0.393,Null,0.536,1,Lower middle income,1,Repressed,53897154,Repressed,ASIA
+Pakistan,0.41,30.69,0.538,1,Lower middle income,1,Repressed,188924874,Repressed,ASIA
+Palestine,Null,Null,0.677,2,Lower middle income,1,Repressed,4668466,Repressed,ASIA
+Tajikistan,0.224,Null,0.624,2,Lower middle income,1,Repressed,8481855,Repressed,ASIA
+Yemen,0.301,Null,0.498,1,Lower middle income,1,Repressed,26832215,Repressed,ASIA
+Equatorial Guinea,Null,Null,0.587,2,Upper middle income,1,Closed,845060,Closed,AFRICA
+Libya,0.48,Null,0.724,3,Upper middle income,1,Closed,6278438,Closed,AFRICA
+Cuba,0.211,Null,0.769,3,Upper middle income,1,Closed,11389562,Closed,AMERICAS
+Iran,0.285,Null,0.766,3,Upper middle income,1,Closed,79109272,Closed,ASIA
+Turkmenistan,Null,Null,0.688,2,Upper middle income,1,Closed,5373502,Closed,ASIA
+Botswana,0.697,Null,0.698,2,Upper middle income,1,Narrowed,2262485,Narrowed,AFRICA
+Mauritius,Null,Null,0.777,3,Upper middle income,1,Narrowed,1273212,Narrowed,AFRICA
+Namibia,0.644,Null,0.628,2,Upper middle income,1,Narrowed,2458830,Narrowed,AFRICA
+South Africa,0.664,Null,0.666,2,Upper middle income,1,Narrowed,50293439,Narrowed,AFRICA
+Argentina,0.821,42.3,0.836,4,Upper middle income,1,Narrowed,43416755,Narrowed,AMERICAS
+Belize,Null,Null,0.715,3,Upper middle income,1,Narrowed,359287,Narrowed,AMERICAS
+Costa Rica,0.923,48.4,0.766,3,Upper middle income,1,Narrowed,4807850,Narrowed,AMERICAS
+Dominica,Null,Null,0.724,3,Upper middle income,1,Narrowed,72680,Narrowed,AMERICAS
+Grenada,Null,Null,0.75,3,Upper middle income,1,Narrowed,106825,Narrowed,AMERICAS
+Guyana,0.652,Null,0.636,2,Upper middle income,1,Narrowed,767085,Narrowed,AMERICAS
+Jamaica,Null,Null,0.719,3,Upper middle income,1,Narrowed,2793335,Narrowed,AMERICAS
+Panama,Null,50.6,0.78,3,Upper middle income,1,Narrowed,3929141,Narrowed,AMERICAS
+Saint Lucia,Null,Null,0.729,3,Upper middle income,1,Narrowed,184999,Narrowed,AMERICAS
+St Vincent and the Grenadines,Null,Null,0.72,3,Upper middle income,1,Narrowed,109462,Narrowed,AMERICAS
+Suriname,0.796,Null,0.714,3,Upper middle income,1,Narrowed,542975,Narrowed,AMERICAS
+Georgia,0.734,Null,0.754,3,Upper middle income,1,Narrowed,3999812,Narrowed,ASIA
+Albania,Null,Null,0.733,3,Upper middle income,1,Narrowed,2896679,Narrowed,EUROPE
+Bosnia & Herzegovina,0.364,Null,0.733,3,Upper middle income,1,Narrowed,3810416,Narrowed,EUROPE
+Bulgaria,0.69,37,0.782,3,Upper middle income,1,Narrowed,7149787,Narrowed,EUROPE
+Macedonia,0.458,35.2,0.747,3,Upper middle income,1,Narrowed,2078453,Narrowed,EUROPE
+Montenegro,Null,31.93,0.802,4,Upper middle income,1,Narrowed,625781,Narrowed,EUROPE
+Romania,0.689,37.4,0.793,3,Upper middle income,1,Narrowed,19511324,Narrowed,EUROPE
+Serbia,Null,38.2,0.771,3,Upper middle income,1,Narrowed,7100000,Narrowed,EUROPE
+Marshall Islands,Null,Null,Null,Null,Upper middle income,1,Narrowed,52993,Narrowed,OCEANIA
+Palau,Null,Null,0.78,3,Upper middle income,1,Narrowed,21291,Narrowed,OCEANIA
+Gabon,Null,Null,0.684,2,Upper middle income,1,Obstructed,1725292,Obstructed,AFRICA
+Brazil,0.912,51.2,0.755,3,Upper middle income,1,Obstructed,207847528,Obstructed,AMERICAS
+Dominican Republic,0.707,44,0.715,3,Upper middle income,1,Obstructed,10528391,Obstructed,AMERICAS
+Ecuador,Null,45.2,0.732,3,Upper middle income,1,Obstructed,16144363,Obstructed,AMERICAS
+Paraguay,0.642,51.7,0.679,2,Upper middle income,1,Obstructed,6639123,Obstructed,AMERICAS
+Peru,0.752,44.1,0.734,3,Upper middle income,1,Obstructed,31376670,Obstructed,AMERICAS
+Jordan,0.271,Null,0.748,3,Upper middle income,1,Obstructed,7594547,Obstructed,ASIA
+Kazakhstan,0.267,Null,0.788,3,Upper middle income,1,Obstructed,17625226,Obstructed,ASIA
+Lebanon,Null,Null,0.769,3,Upper middle income,1,Obstructed,5850743,Obstructed,ASIA
+Malaysia,Null,Null,0.779,3,Upper middle income,1,Obstructed,30331007,Obstructed,ASIA
+Maldives,0.5,Null,0.706,3,Upper middle income,1,Obstructed,363657,Obstructed,ASIA
+Fiji,0.463,Null,0.727,3,Upper middle income,1,Obstructed,892145,Obstructed,OCEANIA
+Tuvalu,Null,Null,Null,Null,Upper middle income,1,Open,9916,Open,OCEANIA
+Algeria,0.365,Null,0.736,3,Upper middle income,1,Repressed,39666519,Repressed,AFRICA
+Angola,Null,Null,0.532,1,Upper middle income,1,Repressed,25021974,Repressed,AFRICA
+Colombia,0.588,53.3,0.72,3,Upper middle income,1,Repressed,48228704,Repressed,AMERICAS
+Mexico,0.6,48.9,0.756,3,Upper middle income,1,Repressed,127017224,Repressed,AMERICAS
+Venezuela,Null,40.7,0.762,3,Upper middle income,1,Repressed,31108083,Repressed,AMERICAS
+Azerbaijan,0.211,Null,0.751,3,Upper middle income,1,Repressed,9753968,Repressed,ASIA
+China,Null,47.7,0.727,3,Upper middle income,1,Repressed,1376048943,Repressed,ASIA
+Iraq,0.401,Null,0.654,2,Upper middle income,1,Repressed,36423395,Repressed,ASIA
+Thailand,0.183,37.85,0.726,3,Upper middle income,1,Repressed,67959359,Repressed,ASIA
+Belarus,0.301,Null,0.798,3,Upper middle income,1,Repressed,9495826,Repressed,EUROPE
+Russia,0.3,Null,0.798,3,Upper middle income,1,Repressed,143456918,Repressed,EUROPE
+Turkey,0.473,Null,0.761,3,Upper middle income,1,Repressed,78665830,Repressed,EUROPE

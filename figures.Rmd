@@ -11,5 +11,90 @@ output:
     highlight: pygments
     theme: sandstone
     code_folding: hide
+    toc: yes
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r load-libraries, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(scales)
+library(sf)
+library(patchwork)
+library(countrycode)
+library(here)
+
+source(here("lib", "graphic-functions.R"))
+```
+
+
+# CIVICUS map
+
+```{r build-civicus-map, warning=FALSE, message=FALSE, fig.width=5.5, fig.height=3}
+# Load CIVICUS data
+# Downloaded from HTML page at https://monitor.civicus.org/
+civicus <- read_csv(here("data", "civicus_monitor_2017.csv"), na = "Null") %>%
+  mutate(Rating = factor(Rating, levels = c("Open", "Narrowed", "Obstructed", 
+                                            "Repressed", "Closed"), 
+                         ordered = TRUE),
+         iso3 = countrycode(Country, "country.name", "iso3c"))
+
+# Load global shapefiles
+# Get Admin 0 file from http://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+world_shapes <- st_read(here("data", "ne_110m_admin_0_countries",
+                             "ne_110m_admin_0_countries.shp"),
+                        quiet = TRUE) %>% 
+  # Ignore Antarctica
+  filter(ISO_A3 != "ATA")
+
+# Use the Robinson map projection
+projection = 54030
+
+# Join CIVICUS data with map data
+map_with_civicus <- world_shapes %>% 
+  # Fix some Natural Earth ISO weirdness
+  mutate(ISO_A3 = ifelse(ISO_A3 == "-99", as.character(ISO_A3_EH), as.character(ISO_A3))) %>% 
+  mutate(ISO_A3 = case_when(
+    .$ISO_A3 == "GRL" ~ "DNK",
+    .$NAME == "Norway" ~ "NOR",
+    TRUE ~ ISO_A3
+  )) %>% 
+  left_join(civicus, by = c("ISO_A3" = "iso3"))
+
+plot_civicus_map <- ggplot() +
+  geom_sf(data = map_with_civicus, aes(fill = Rating), size = 0.15, color = "black") +
+  coord_sf(crs = st_crs(projection), datum = NA) +
+  scale_fill_manual(values = c("grey90", "grey70", "grey45",
+                               "grey20", "black"),
+                    na.translate = FALSE, name = "Civic space") +
+  theme_ngo_map()
+plot_civicus_map
+
+# Save the map
+ggsave(plot_civicus_map, filename = here("output", "civicus_map.pdf"), 
+       width = 5.5, height = 3, units = "in", device = cairo_pdf)
+
+ggsave(plot_civicus_map, filename = here("output", "civicus_map.png"), 
+       width = 5.5, height = 3, units = "in", dpi = 300, type = "cairo")
+```
+
+
+# Barriers
+
+INSERT FIGURE ON BARRIERS TO ENTRY, FUNDING, AND ADVOCACY FOR NGOs (fig_barriers_summary)
+
+
+# Something with official donors
+
+
+# Individual private philanthropy
+
+ONE SUITABLE GRAPH FOR THIS SECTION? (amount_single_summary or amount-medians?)
+
+
+# Domestic NGOs
+
+Something from my dissertation?
+
+
 
