@@ -35,7 +35,7 @@ theme_ngo <- function(base_size = 9, base_family = "Oswald-Regular") {
           axis.ticks = element_blank(),
           axis.title.x = element_text(margin = margin(t = 10)),
           legend.key = element_blank(),
-          legend.text = element_text(family = "Oswald Light", face = "plain"),
+          legend.text = element_text(size = rel(1), family = "Oswald Light", face = "plain"),
           legend.spacing = unit(0.1, "lines"),
           legend.box.margin = margin(t = -0.5, unit = "lines"),
           legend.margin = margin(t = 0),
