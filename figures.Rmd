@@ -1,5 +1,5 @@
 ---
-title: 'Analysis for "Closing Space"'
+title: 'Figures for "Closing Space"'
 author:
 - name: Suparna Chaudhry
   affiliation: Christopher Newport University
