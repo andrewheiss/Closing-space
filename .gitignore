@@ -6,6 +6,13 @@ manuscript/*.tex
 manuscript/tex-out/*
 manuscript/vc*
 
+# Proprietary data
+# V-Dem: download from https://www.v-dem.net/
+data/Country_Year_V-Dem_Extended_CSV_v8/*
+# Christensen and Weinstein NGO restrictions: download from 
+# https://darinchristensen.com/replication/JoD_Replication.zip
+data/dcjw-ngo-laws/*
+
 # Other folders
 admin
 !output/*.pdf

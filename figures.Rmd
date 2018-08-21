@@ -22,6 +22,9 @@ library(scales)
 library(sf)
 library(patchwork)
 library(countrycode)
+library(readxl)
+library(validate)
+library(pander)
 library(here)
 
 source(here("lib", "graphic-functions.R"))
@@ -79,9 +82,226 @@ ggsave(plot_civicus_map, filename = here("output", "civicus_map.png"),
 ```
 
 
-# Barriers
+# Legal barriers to NGO activity
 
-INSERT FIGURE ON BARRIERS TO ENTRY, FUNDING, AND ADVOCACY FOR NGOs (fig_barriers_summary)
+## DCJW
+
+```{r dcjw-barriers-clean-data}
+# https://darinchristensen.com/replication/JoD_Replication.zip
+
+dcjw_indexes <- tribble(
+  ~barrier,   ~question, ~question_clean,
+  "Entry",    "q_2b",    "NGO registration burdensome",
+  "Entry",    "q_2d",    "Registration barriers different if foreign funds involved",
+  "Funding",  "q_3b",    "Prior approval required\nfor foreign funds",
+  "Funding",  "q_3c",    "Foreign funds channeled\nthrough government",
+  "Funding",  "q_3d",    "Foreign funds restricted",
+  "Funding",  "q_3e",    "Foreign funds prohibited",
+  "Funding",  "q_3f",    "Foreign funds prohibted\nfor some types of NGOs",
+  "Advocacy", "q_4a",    "NGOs restricted from politics",
+  "Advocacy", "q_4c",    "Political barriers different\nif foreign funds involved"
+)
+
+# Original DCJW data
+dcjw_raw <- read_excel(here("data", "dcjw-ngo-laws", "DCJW_NGO_Laws.xlsx"))[,1:50] %>%
+  select(-c(contains("source"), contains("burden"), contains("subset"), Coder, Date))
+
+dcjw_tidy <- dcjw_raw %>% 
+  gather(key, value, -Country) %>%
+  separate(key, c("question", "var.name"), 4) %>%
+  filter(!is.na(Country)) %>%
+  mutate(var.name = ifelse(var.name == "", "value", gsub("_", "", var.name))) %>%
+  spread(var.name, value) %>%
+  # Get rid of rows where year is missing and regulation was not imposed
+  filter(!(is.na(year) & value == 0)) %>%
+  # Some entries have multiple years; for now just use the first year
+  mutate(year = str_split(year, ",")) %>% unnest(year) %>% 
+  group_by(Country, question) %>% slice(1) %>% ungroup() %>%
+  mutate(value = as.integer(value), year = as.integer(year)) %>%
+  # If year is missing but some regulation exists, assume it has always already
+  # existed (since 1950, arbitrarily)
+  mutate(year = ifelse(is.na(year), 1950, year))
+
+dcjw_potential_panel <- dcjw_tidy %>% 
+  filter(question %in% dcjw_indexes$question) %>% 
+  expand(Country, question, year = min(.$year, na.rm = TRUE):2015)
+
+dcjw_full_panel <- dcjw_potential_panel %>% 
+  left_join(dcjw_tidy, by = c("Country", "question", "year")) %>% 
+  # Bring most recent legislation forward
+  group_by(Country, question) %>%
+  mutate(value = zoo::na.locf(value, na.rm = FALSE)) %>%
+  ungroup() %>% 
+  mutate(value = ifelse(is.na(value), 0, value)) %>% 
+  mutate(value = case_when(
+    # Recode 0-2 questions as 0-1
+    .$question == "q_3e" & .$value == 1 ~ 0.5,
+    .$question == "q_3e" & .$value == 2 ~ 1,
+    .$question == "q_3f" & .$value == 1 ~ 0.5,
+    .$question == "q_3f" & .$value == 2 ~ 1,
+    .$question == "q_4a" & .$value == 1 ~ 0.5,
+    .$question == "q_4a" & .$value == 2 ~ 1,
+    TRUE ~ .$value
+  )) %>% 
+  spread(question, value) %>% 
+  mutate(
+    entry = rowSums(
+      select(., one_of(filter(dcjw_indexes, barrier == "Entry")$question))),
+    funding = rowSums(
+      select(., one_of(filter(dcjw_indexes, barrier == "Funding")$question))),
+    advocacy = rowSums(
+      select(., one_of(filter(dcjw_indexes, barrier == "Advocacy")$question)))
+    ) %>% 
+  # Lop off the ancient observations
+  filter(year >= 1980)
+```
+
+```{r dcjw-barriers-plot}
+n_countries <- dcjw_full_panel %>% distinct(Country) %>% nrow()
+
+df_barriers_summary <- dcjw_full_panel %>% 
+  group_by(Country, year) %>% 
+  summarize_at(vars(one_of(dcjw_indexes$question)), funs(. > 0)) %>% 
+  group_by(year) %>% 
+  summarize_at(vars(-Country, -year), funs(sum(.))) %>% 
+  gather(question, value, -year) %>% 
+  left_join(dcjw_indexes, by = "question") %>% 
+  arrange(desc(value)) %>% 
+  mutate(barrier = paste0("Barriers to ", str_to_lower(barrier))) %>% 
+  mutate(question_clean = fct_inorder(question_clean, ordered = TRUE))
+
+plot_entry <- ggplot(
+  filter(df_barriers_summary, barrier == "Barriers to entry"), 
+  aes(x = year, y = value, color = question_clean, linetype = question_clean)
+) +
+  geom_line(size = 0.5) +
+  expand_limits(y = c(0, 60)) +
+  scale_y_continuous(sec.axis = 
+                       sec_axis(~ . / n_countries,
+                                labels = percent_format(accuracy = 1)),
+                     expand = c(0, 0)) +
+  scale_colour_manual(values = c("black", "grey80", "grey50"), name = NULL) +
+  scale_linetype_manual(values = c("solid", "solid", "21"), name = NULL) +
+  guides(color = guide_legend(nrow = 2)) +
+  labs(x = NULL, y = "Number of countries") +
+  theme_ngo() + 
+  theme(legend.justification = "left") +
+  facet_wrap(~ barrier)
+
+plot_funding <- ggplot(
+  filter(df_barriers_summary, barrier == "Barriers to funding"), 
+  aes(x = year, y = value, color = question_clean, linetype = question_clean)
+) +
+  geom_line(size = 0.5) +
+  expand_limits(y = c(0, 35)) +
+  scale_y_continuous(sec.axis = 
+                       sec_axis(~ . / n_countries,
+                                labels = percent_format(accuracy = 1)),
+                     expand = c(0, 0),
+                     breaks = seq(0, 35, 5)) +
+  scale_colour_manual(values = c("black", "grey80", "grey50", "black", "grey80"), name = NULL) +
+  scale_linetype_manual(values = c("solid", "solid", "solid", "21", "21"), name = NULL) +
+  guides(color = guide_legend(nrow = 3),
+         linetype = guide_legend(nrow = 3)) +
+  labs(x = NULL, y = "Number of countries") +
+  theme_ngo() + 
+  theme(legend.justification = "left") +
+  facet_wrap(~ barrier)
+
+plot_advocacy <- ggplot(
+  filter(df_barriers_summary, barrier == "Barriers to advocacy"), 
+  aes(x = year, y = value, color = question_clean)
+) +
+  geom_line(size = 0.5) +
+  expand_limits(y = c(0, 25)) +
+  scale_y_continuous(sec.axis = 
+                       sec_axis(~ . / n_countries,
+                                labels = percent_format(accuracy = 1)),
+                     expand = c(0, 0)) +
+  scale_colour_manual(values = c("black", "grey80"), name = NULL) +
+  guides(color = guide_legend(nrow = 1)) +
+  labs(x = NULL, y = "Number of countries") +
+  theme_ngo() + 
+  theme(legend.justification = "left") +
+  facet_wrap(~ barrier)
+```
+
+## V-Dem
+
+When loading the [V-Dem](https://www.v-dem.net/en/) CSV, `readr::read_csv()` chokes on a bunch of rows for whatever reason and gives a ton of warnings, but it still works. Loading the Stata version of V-Dem doesn't create the warnings, but it's slower and it results in the same data. So I just load from CSV and make sure it has the right number of rows and columns in the end. 
+
+```{r load-vdem, cache=TRUE, warning=FALSE, message=FALSE}
+# V-Dem data
+vdem_raw <- read_csv(here("data", "Country_Year_V-Dem_Extended_CSV_v8",
+                          "V-Dem-CY+Others-v8.csv"))
+```
+
+```{r check-vdem, results="asis", message=FALSE, warning=FALSE}
+# Check that the data loaded correctly
+vdem_raw %>% 
+  check_that(n_rows = nrow(.) == 26537, n_cols = ncol(.) == 4641) %>%
+  summary() %>% 
+  mutate(expression = expression %>% map_chr(pandoc.verbatim.return)) %>% 
+  pandoc.table()
+```
+
+```{r clean-vdem}
+vdem_small <- vdem_raw %>% 
+  select(country_name, year, ccode = COWcode, v2x_regime, v2csreprss, v2cseeorgs) %>% 
+  # Autocracy = closed autocracies and electoral autocracies with V-Dem's RoW index
+  mutate(autocracy = v2x_regime <= 1,
+         csre = v2csreprss + v2cseeorgs)
+
+generally_autocracies <- vdem_small %>% 
+  filter(year > 1980, year <= 2013) %>% 
+  group_by(ccode) %>% 
+  summarize(prop_autocracy = sum(autocracy, na.rm = TRUE) / n(),
+            generally_autocracy = prop_autocracy >= 0.5)
+```
+
+```{r csre-plot}
+df_csre_summary <- vdem_small %>%
+  filter(!is.na(autocracy), year >= 1980, year <= 2013) %>% 
+  left_join(generally_autocracies, by = "ccode") %>% 
+  group_by(year, generally_autocracy) %>%
+  nest() %>% 
+  mutate(cis = data %>% map(~ mean_cl_normal(.$csre))) %>% 
+  unnest(cis) %>% 
+  mutate(fake_facet_title = "Civil society regulatory environment",
+         generally_autocracy = factor(generally_autocracy, levels = c(FALSE, TRUE),
+                                      labels = c("Democracies", "Autocracies"), ordered = TRUE))
+
+plot_csre <- ggplot(df_csre_summary, aes(x = year, y = y)) +
+  geom_ribbon(aes(ymin = ymin, ymax = ymax, fill = generally_autocracy), alpha = 0.2) +
+  geom_line(aes(color = generally_autocracy), size = 0.5) +
+  annotate(geom = "text", x = 2013, y = -2.2, hjust = "right", size = 2,
+           label = "Larger values = more open civil society") +
+  scale_colour_manual(values = c("black", "grey75"), name = NULL) +
+  scale_fill_manual(values = c("black", "grey75"), name = NULL) +
+  scale_linetype_manual(values = c("solid", "solid", "21")) +
+  labs(y = "Average CSRE", x = NULL) +
+  theme_ngo() +
+  theme(legend.justification = "left") +
+  facet_wrap(~ fake_facet_title)
+```
+
+## De jure and de facto anti-NGO barriers
+
+```{r barriers-both-plot, fig.width=5.5, fig.height=4.5}
+barriers_summary <- 
+  ((plot_entry + plot_funding) / (plot_advocacy + plot_csre)) &
+  theme(legend.text = element_text(size = rel(0.8)),
+        axis.title.y = element_text(margin = margin(r = 3), size = rel(0.8)),
+        legend.box.margin = margin(t = -0.5, unit = "lines"))
+
+barriers_summary
+
+ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.pdf"), 
+       width = 5.5, height = 4.5, units = "in", device = cairo_pdf)
+
+ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.png"), 
+       width = 5.5, height = 4.5, units = "in", dpi = 300, type = "cairo")
+```
 
 
 # Something with official donors
