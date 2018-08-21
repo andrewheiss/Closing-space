@@ -304,7 +304,86 @@ ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.png"),
 ```
 
 
-# Something with official donors
+# Donors and restrictions
+
+```{r load-predictions, warning=FALSE, message=FALSE, cache=TRUE}
+predicted_oda <- read_csv(here("data", "predicted-donors",
+                               "predicted_h1_barriers_individual.csv"))
+
+predicted_contention <- read_csv(here("data", "predicted-donors",
+                                      "predicted_h2_barriers_individual.csv"))
+```
+
+```{r plot-predictions, fig.width=5.5, fig.height=2.5}
+df_oda_predict <- predicted_oda %>% 
+  gather(barrier, barrier_value, advocacy_within) %>%
+  group_by(cowcode, barrier_value, barrier) %>%
+  summarise_at(vars(predicted), funs(mean(.)))
+
+df_oda_predict_mean <- df_oda_predict %>%
+  group_by(barrier, barrier_value) %>%
+  summarise(predicted = mean(predicted)) %>%
+  mutate(cowcode = 1)  # Fake country so the line plots
+
+plot_oda_predict <- ggplot(df_oda_predict, 
+       aes(x = barrier_value, y = expm1(predicted), group = cowcode)) + 
+  geom_vline(xintercept = 0, colour = "black", size = 0.5) + 
+  geom_smooth(method = "lm", size = 0.1, alpha = 0.1, 
+              colour = "grey30") +
+  geom_smooth(data = df_oda_predict_mean, size = 1.5, 
+              method = "lm", colour = "black") +
+  labs(x = "Change from average number of anti-advocacy barriers",
+       y = "Predicted ODA in the following year",
+       title = "Barriers to advocacy and aid") +
+  scale_y_continuous(labels = dollar) +
+  theme_ngo() 
+
+# Inverse logit, with the ability to account for adjustments
+# via http://stackoverflow.com/a/23845527/120898
+inv_logit <- function(f, a) {
+  a <- (1 - 2 * a)
+  (a * (1 + exp(f)) + (exp(f) - 1)) / (2 * a * (1 + exp(f)))
+}
+
+df_contention_predict <- predicted_contention %>% 
+  gather(barrier, barrier_value, advocacy_within) %>%
+  group_by(cowcode, barrier_value, barrier) %>%
+  summarise_at(vars(predicted), funs(mean(.))) %>% 
+  mutate(predicted_fixed = inv_logit(predicted, a = 0.001))
+
+df_contention_predict_mean <- df_contention_predict %>%
+  group_by(barrier, barrier_value) %>%
+  summarise(predicted = mean(predicted)) %>%
+  mutate(cowcode = 1,  # Fake country so the line plots
+         predicted_fixed = inv_logit(predicted, a = 0.001))
+
+plot_contention_predict <- ggplot(df_contention_predict, 
+       aes(x = barrier_value, y = predicted_fixed, group = cowcode)) + 
+  geom_vline(xintercept = 0, colour = "black", size = 0.5) + 
+  geom_smooth(method = "lm", size = 0.1, alpha = 0.1, 
+              colour = "grey30") +
+  geom_smooth(data = df_contention_predict_mean, size = 1.5, 
+              method = "lm", colour = "black") +
+  labs(x = "Change from average number of anti-advocacy barriers",
+       y = "Predicted proportion of\ncontentious aid in the following year",
+       title = "Barriers to advocacy and contentiousness of aid") +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  theme_ngo() 
+
+plot_predict_both <- 
+  (plot_oda_predict + plot_contention_predict + plot_layout(ncol = 2)) &
+  theme(plot.title = element_text(size = rel(0.9), family = "Oswald-Regular", face = "plain"),
+        axis.title.x = element_text(size = rel(0.8)),
+        axis.title.y = element_text(margin = margin(r = 3), size = rel(0.8)))
+
+plot_predict_both
+
+ggsave(plot_predict_both, filename = here("output", "fig-predict-both.pdf"), 
+       width = 5.5, height = 2.5, units = "in", device = cairo_pdf)
+
+ggsave(plot_predict_both, filename = here("output", "fig-predict-both.png"), 
+       width = 5.5, height = 2.5, units = "in", dpi = 300, type = "cairo")
+```
 
 
 # Individual private philanthropy
