@@ -253,7 +253,7 @@ vdem_small <- vdem_raw %>%
          csre = v2csreprss + v2cseeorgs)
 
 generally_autocracies <- vdem_small %>% 
-  filter(year > 1980, year <= 2013) %>% 
+  filter(year > 1980, year <= 2018) %>% 
   group_by(ccode) %>% 
   summarize(prop_autocracy = sum(autocracy, na.rm = TRUE) / n(),
             generally_autocracy = prop_autocracy >= 0.5)
@@ -261,7 +261,7 @@ generally_autocracies <- vdem_small %>%
 
 ```{r csre-plot}
 df_csre_summary <- vdem_small %>%
-  filter(!is.na(autocracy), year >= 1980, year <= 2013) %>% 
+  filter(!is.na(autocracy), year >= 1980, year <= 2018) %>% 
   left_join(generally_autocracies, by = "ccode") %>% 
   group_by(year, generally_autocracy) %>%
   nest() %>% 
