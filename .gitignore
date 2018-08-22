@@ -3,8 +3,8 @@ manuscript/*.docx
 manuscript/*.html
 manuscript/*.pdf
 manuscript/*.tex
-manuscript/tex-out/*
-manuscript/vc*
+manuscript/tex_out/*
+vc*
 
 # Proprietary data
 # V-Dem: download from https://www.v-dem.net/
