@@ -5,6 +5,7 @@ manuscript/*.pdf
 manuscript/*.tex
 manuscript/tex_out/*
 vc*
+submissions/*
 
 # Proprietary data
 # V-Dem: download from https://www.v-dem.net/
