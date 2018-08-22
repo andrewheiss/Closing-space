@@ -388,14 +388,6 @@ ggsave(plot_predict_both, filename = here("output", "fig-predict-both.png"),
 ```
 
 
-# Individual private philanthropy
-
-ONE SUITABLE GRAPH FOR THIS SECTION? (amount_single_summary or amount-medians?)
-
-
 # Domestic NGOs
 
 Something from my dissertation?
-
-
-
