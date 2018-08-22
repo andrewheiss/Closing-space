@@ -9,7 +9,9 @@ author:
   email: andrew_heiss@byu.edu
 date: August 17, 2018
 published: Please do not cite without permission.
+git-repo: https://github.com/andrewheiss/Closing-space
 reference-section-title: References
+sansfont: Roboto Condensed
 toc: false
 ---
 
