@@ -219,7 +219,7 @@ bib:	$(BIB)
 
 %-manuscript.odt: %.md
 	@echo "$(WARN_COLOR)Converting Markdown to .odt using manuscript template...$(NO_COLOR)"
-	replace_includes $< | replace_pdfs $(PNG_CONVERT) | move_figs_tables_to_end $(BLINDIFY) | \
+	replace_includes $< | replace_pdfs $(PNG_CONVERT) $(BLINDIFY) | \
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+smart -w odt \
 		$(CROSSREF) \
 		--default-image-extension=png \
