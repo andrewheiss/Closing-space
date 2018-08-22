@@ -28,6 +28,7 @@ library(pander)
 library(here)
 
 source(here("lib", "graphic-functions.R"))
+# qwraps2::lazyload_cache_dir("figures_cache/html")
 ```
 
 
@@ -70,7 +71,7 @@ plot_civicus_map <- ggplot() +
   scale_fill_manual(values = c("grey90", "grey70", "grey45",
                                "grey20", "black"),
                     na.translate = FALSE, name = "Civic space") +
-  theme_ngo_map()
+  theme_ngo_map(9)
 plot_civicus_map
 
 # Save the map
@@ -318,7 +319,8 @@ predicted_contention <- read_csv(here("data", "predicted-donors",
 df_oda_predict <- predicted_oda %>% 
   gather(barrier, barrier_value, advocacy_within) %>%
   group_by(cowcode, barrier_value, barrier) %>%
-  summarise_at(vars(predicted), funs(mean(.)))
+  summarise_at(vars(predicted), funs(mean(.))) %>% 
+  mutate(fake_facet_title = "Barriers to advocacy and aid")
 
 df_oda_predict_mean <- df_oda_predict %>%
   group_by(barrier, barrier_value) %>%
@@ -333,10 +335,10 @@ plot_oda_predict <- ggplot(df_oda_predict,
   geom_smooth(data = df_oda_predict_mean, size = 1.5, 
               method = "lm", colour = "black") +
   labs(x = "Change from average number of anti-advocacy barriers",
-       y = "Predicted ODA in the following year",
-       title = "Barriers to advocacy and aid") +
+       y = "Predicted ODA in the following year") +
   scale_y_continuous(labels = dollar) +
-  theme_ngo() 
+  theme_ngo() +
+  facet_wrap(~ fake_facet_title)
 
 # Inverse logit, with the ability to account for adjustments
 # via http://stackoverflow.com/a/23845527/120898
@@ -349,7 +351,8 @@ df_contention_predict <- predicted_contention %>%
   gather(barrier, barrier_value, advocacy_within) %>%
   group_by(cowcode, barrier_value, barrier) %>%
   summarise_at(vars(predicted), funs(mean(.))) %>% 
-  mutate(predicted_fixed = inv_logit(predicted, a = 0.001))
+  mutate(predicted_fixed = inv_logit(predicted, a = 0.001)) %>% 
+  mutate(fake_facet_title = "Barriers to advocacy and contentiousness of aid")
 
 df_contention_predict_mean <- df_contention_predict %>%
   group_by(barrier, barrier_value) %>%
@@ -365,15 +368,14 @@ plot_contention_predict <- ggplot(df_contention_predict,
   geom_smooth(data = df_contention_predict_mean, size = 1.5, 
               method = "lm", colour = "black") +
   labs(x = "Change from average number of anti-advocacy barriers",
-       y = "Predicted proportion of\ncontentious aid in the following year",
-       title = "Barriers to advocacy and contentiousness of aid") +
+       y = "Predicted proportion of\ncontentious aid in the following year") +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
-  theme_ngo() 
+  theme_ngo() +
+  facet_wrap(~ fake_facet_title)
 
 plot_predict_both <- 
   (plot_oda_predict + plot_contention_predict + plot_layout(ncol = 2)) &
-  theme(plot.title = element_text(size = rel(0.9), family = "Oswald-Regular", face = "plain"),
-        axis.title.x = element_text(size = rel(0.8)),
+  theme(axis.title.x = element_text(size = rel(0.8)),
         axis.title.y = element_text(margin = margin(r = 3), size = rel(0.8)))
 
 plot_predict_both
