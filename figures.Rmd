@@ -352,7 +352,7 @@ df_contention_predict <- predicted_contention %>%
   group_by(cowcode, barrier_value, barrier) %>%
   summarise_at(vars(predicted), funs(mean(.))) %>% 
   mutate(predicted_fixed = inv_logit(predicted, a = 0.001)) %>% 
-  mutate(fake_facet_title = "Barriers to advocacy and contentiousness of aid")
+  mutate(fake_facet_title = "Barriers to advocacy\nand contentiousness of aid")
 
 df_contention_predict_mean <- df_contention_predict %>%
   group_by(barrier, barrier_value) %>%
