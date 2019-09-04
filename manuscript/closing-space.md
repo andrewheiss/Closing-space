@@ -9,8 +9,7 @@ author:
   affiliation: Brigham Young University
   url: https://www.andrewheiss.com/
   email: andrew_heiss@byu.edu
-date: November 27, 2018
-published: Please do not cite without permission.
+date: November 27, 2018 
 git-repo: https://github.com/andrewheiss/Closing-space
 reference-section-title: References
 sansfont: Roboto Condensed
