@@ -1,10 +1,10 @@
 ---
-title: 'Figures for "Closing Space"'
+title: 'Figures for "Closing Space and the Restructuring of Global Activism"'
 author:
 - name: Suparna Chaudhry
-  affiliation: Christopher Newport University
+  affiliation: Lewis & Clark College
 - name: Andrew Heiss
-  affiliation: Brigham Young University
+  affiliation: Georgia State University
 date: "Last run: `r format(Sys.time(), '%B %e, %Y')`"
 output: 
   html_document: 
@@ -29,6 +29,8 @@ library(here)
 
 source(here("lib", "graphic-functions.R"))
 # qwraps2::lazyload_cache_dir("figures_cache/html")
+
+options(dplyr.summarise.inform = FALSE)
 ```
 
 
@@ -52,7 +54,7 @@ world_shapes <- st_read(here("data", "ne_110m_admin_0_countries",
   filter(ISO_A3 != "ATA")
 
 # Use the Robinson map projection
-projection = 54030
+projection = "ESRI:54030"
 
 # Join CIVICUS data with map data
 map_with_civicus <- world_shapes %>% 
@@ -80,6 +82,9 @@ ggsave(plot_civicus_map, filename = here("output", "civicus_map.pdf"),
 
 ggsave(plot_civicus_map, filename = here("output", "civicus_map.png"), 
        width = 5.5, height = 3, units = "in", dpi = 300, type = "cairo")
+
+# ggsave(plot_civicus_map, filename = here("output", "civicus_map.tiff"), 
+#        width = 5.5, height = 3, units = "in", type = "cairo", dpi = 600)
 ```
 
 
@@ -162,9 +167,9 @@ n_countries <- dcjw_full_panel %>% distinct(Country) %>% nrow()
 
 df_barriers_summary <- dcjw_full_panel %>% 
   group_by(Country, year) %>% 
-  summarize_at(vars(one_of(dcjw_indexes$question)), funs(. > 0)) %>% 
+  summarize_at(vars(one_of(dcjw_indexes$question)), list(~. > 0)) %>% 
   group_by(year) %>% 
-  summarize_at(vars(-Country, -year), funs(sum(.))) %>% 
+  summarize_at(vars(-Country), list(~sum(.))) %>% 
   gather(question, value, -year) %>% 
   left_join(dcjw_indexes, by = "question") %>% 
   arrange(desc(value)) %>% 
@@ -302,6 +307,9 @@ ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.pdf"),
 
 ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.png"), 
        width = 5.5, height = 4.5, units = "in", dpi = 300, type = "cairo")
+
+# ggsave(barriers_summary, filename = here("output", "fig-barriers-summary.tiff"), 
+#        width = 5.5, height = 4.5, units = "in", type = "cairo", dpi = 600)
 ```
 
 
@@ -315,11 +323,11 @@ predicted_contention <- read_csv(here("data", "predicted-donors",
                                       "predicted_h2_barriers_individual.csv"))
 ```
 
-```{r plot-predictions, fig.width=5.5, fig.height=2.5}
+```{r plot-predictions, fig.width=5.5, fig.height=2.5, warning=FALSE, message=FALSE}
 df_oda_predict <- predicted_oda %>% 
   gather(barrier, barrier_value, advocacy_within) %>%
   group_by(cowcode, barrier_value, barrier) %>%
-  summarise_at(vars(predicted), funs(mean(.))) %>% 
+  summarise_at(vars(predicted), list(~mean(.))) %>% 
   mutate(fake_facet_title = "Barriers to advocacy and aid")
 
 df_oda_predict_mean <- df_oda_predict %>%
@@ -350,7 +358,7 @@ inv_logit <- function(f, a) {
 df_contention_predict <- predicted_contention %>% 
   gather(barrier, barrier_value, advocacy_within) %>%
   group_by(cowcode, barrier_value, barrier) %>%
-  summarise_at(vars(predicted), funs(mean(.))) %>% 
+  summarise_at(vars(predicted), list(~mean(.))) %>% 
   mutate(predicted_fixed = inv_logit(predicted, a = 0.001)) %>% 
   mutate(fake_facet_title = "Barriers to advocacy\nand contentiousness of aid")
 
@@ -385,9 +393,7 @@ ggsave(plot_predict_both, filename = here("output", "fig-predict-both.pdf"),
 
 ggsave(plot_predict_both, filename = here("output", "fig-predict-both.png"), 
        width = 5.5, height = 2.5, units = "in", dpi = 300, type = "cairo")
+
+# ggsave(plot_predict_both, filename = here("output", "fig-predict-both.tiff"), 
+#        width = 5.5, height = 2.5, units = "in", type = "cairo", dpi = 600)
 ```
-
-
-# Domestic NGOs
-
-Something from my dissertation?
