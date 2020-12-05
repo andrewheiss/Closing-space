@@ -9,7 +9,8 @@ author:
   affiliation: Georgia State University
   email: aheiss@gsu.edu
   url: https://www.andrewheiss.com/
-date: August 4, 2020 
+date: November 5, 2020 
+published: "Chapter 2 in *Beyond the Boomerang: New Patterns in Transcalar Advocacy*, eds. Christopher L. Pallas and Elizabeth Bloodgood (Tuscaloosa, AL: University of Alabama Press, 2021)"
 git-repo: https://github.com/andrewheiss/Closing-space
 reference-section-title: References
 sansfont: Roboto Condensed
@@ -46,11 +47,11 @@ This recent literature has made important advances in exploring the nature of th
 
 To offset the challenges posed by NGOs, states have used both violent and non-violent strategies to restrict the space available for civil society. Violent crackdowns, including arrests, disappearances, extra-judicial killings, and attacks on NGO offices, garner substantial press attention and are often the public face of the ongoing global crackdown on civil society. Front Line Defenders, a Dublin-based group that aims to protect human rights defenders at risk, notes that false arrests, fabricated prosecutions, and unfair trials of these activists are the most common forms of overt crackdown against such NGOs [@fld:2016].
 
-Governments are also increasingly using legislation to repress NGOs. However, not all NGO-related legislation is necessarily aimed at restricting NGOs. Laws and regulations establish standards for appropriate organizational behavior and set penalties for violations [@North1990], produce convergent practices, and prevent malfeasance that threatens to undermine confidence in the entire NGO community [@ONeill2009; @btb2016]. Here we focus primarily on the impact of restrictive or anti-NGO laws. Unlike benign regulations, anti-NGO laws are intended to have a negative impact on the NGO community, creating barriers to their entry, funding, and advocacy.
+Governments are also increasingly using legislation to repress NGOs. However, not all NGO-related legislation is necessarily aimed at restricting NGOs. Laws and regulations establish standards for appropriate organizational behavior and set penalties for violations [@North1990], produce convergent practices, and prevent malfeasance that threatens to undermine confidence in the entire NGO community [@ONeill2009; @btb2016]. Here we focus primarily on the impact of restrictive or anti-NGO laws. Unlike benign regulations, anti-NGO laws are intended to have a negative impact on the NGO community, creating barriers to their entry, funding, and advocacy. As @fig:barriers shows, the regulatory barriers for civil society organizations to enter, receive funding, and advocate have been rising steadily.
 
 Barriers to entry include using the law to discourage, slow down, or prohibit the establishment of NGOs. Many states have burdensome registration requirements, restrictions on the formation of new groups, arbitrary grounds for denying registration, and stricter entry requirements for international organizations. As discussed in chapter 9 in the case of Vietnam (Pallas and Nguyen, this volume), these requirements, such as having at least five people with university degrees in the organization, requiring a certain amount of cash as capital, office space, and so forth, can often place undue burden on the formation and registration of local NGOs.
 
-![**Top; bottom left**: Number of legal barriers to NGO activity per country over time (*de jure* legislation; source: @ChristensenWeinstein:2013, @Chaudhry:2016); **bottom right**: average civil society regulatory environment (CSRE) per country over time (*de facto* environment; source: @Heiss:2017, @VDEM)](output/fig-barriers-summary.pdf){#fig:barriers}
+![Civil Society Regulations. **Top; bottom left**: Number of legal barriers to NGO activity per country over time (*de jure* legislation; Data from: @ChristensenWeinstein:2013, @Chaudhry:2016). (Suparna Chaudhry and Andrew Heiss)). **Bottom right**: Average civil society regulatory environment (CSRE) per country over time (*de facto* environment; Data from @Heiss:2017, @VDEM). (Suparna Chaudhry and Andrew Heiss)](output/fig-barriers-summary.pdf){#fig:barriers}
 
 Barriers to funding include laws that restrict the ability of NGOs to secure financial resources for their programs. States restrict NGO finances based on the origin of funds, how those funds are channeled, and which issues these funds can be used towards. Restrictions against foreign-funded NGOs or against groups that work on issues that are not regime-compatible—for instance, human rights, elections, media, youth groups, among others—have become the most pervasive form of crackdown, and much research has looked specifically at funding regulations [see @Jalali:2008; @Mikail:2013; @DPR2015; @DupuyRonPrakash:2016].
 
