@@ -183,7 +183,7 @@ bib:	$(BIB)
 		--metadata linkReferences=true \
 		--template=$(PREFIX)/templates/html.html \
 		--css=$(PREFIX)/templates/ath-clean.css \
-		--filter pandoc-citeproc \
+		--citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
 		-o $@
@@ -237,7 +237,7 @@ bib:	$(BIB)
 		--default-image-extension=png \
 		--template=$(PREFIX)/templates/odt.odt \
 		--reference-doc=$(PREFIX)/templates/reference.odt \
-		--filter pandoc-citeproc \
+		--citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
 		-o $@
@@ -252,7 +252,7 @@ bib:	$(BIB)
 		--default-image-extension=png \
 		--template=$(PREFIX)/templates/odt-manuscript.odt \
 		--reference-doc=$(PREFIX)/templates/reference-manuscript.odt \
-		--filter pandoc-citeproc \
+		--citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
 		-o $@
